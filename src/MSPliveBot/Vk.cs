@@ -13,8 +13,9 @@ namespace MSPliveBot
         public static string PostMessage(string message)
         {
             string url =
-                "https://api.vk.com/method/wall.post?access_token=1eeecee15eac0987e40c9ca0a5a172bec2ceeede97aa083f4eb5c1c8baf39db9160686558a4ed47dd4124&=owner_id=-137871833&from_group=1&message=" +
-                message;
+                 string.Format(
+              "https://api.vk.com/method/wall.post?owner_id={0}&from_group=0&signed=0&access_token={1}&message={2}",
+                  "-137865431", "c68cb90b2eeab6c27ec8d21aa62b7fb56e8f99e7988a91fcd9b2d5cf1ac3f34f931f10d058431dc6ea247", message);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
