@@ -23,9 +23,14 @@ namespace MSPliveBot
                 }
             }
 
+            var me = bot.GetMe().Result;
+
+
             bot.OnMessage += message;
 
             bot.StartReceiving();
+            Console.Write(me.Username);
+
         }
 
         private static string state = "";
@@ -84,7 +89,9 @@ namespace MSPliveBot
                     {
                         string text = message.Text.Substring(6);
 
-                        bot.SendTextMessageAsync(id, text);
+                        string result = Vk.PostMessage(text);
+
+                        bot.SendTextMessageAsync(id, text+ "\r\n" + result );
                     }
 
                     if (state == "addPost")
